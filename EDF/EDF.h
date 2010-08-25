@@ -189,4 +189,7 @@ bool EDFFind(EDF *pEDF, const char *szName, int iID, bool bRecurse);
 
 int EDFDelete(EDF *pEDF, const char *szName, bool bRecurse = false);
 
+#define stricmp strcasecmp
+#define strnicmp strncasecmp
+
 #endif

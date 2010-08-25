@@ -154,4 +154,7 @@ private:
    void childList();
 };
 
+#define stricmp strcasecmp
+#define strnicmp strncasecmp
+
 #endif
