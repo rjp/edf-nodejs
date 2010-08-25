@@ -6,6 +6,8 @@
 #ifndef _USEFUL_H_
 #define _USEFUL_H_
 
+#define PSAPIOFF
+
 typedef unsigned char byte;
 #ifdef FREEBSD
 #define bool int
