@@ -9,6 +9,10 @@
 using namespace node;
 using namespace v8;
 
+const char* ToCString(const v8::String::Utf8Value& value) {
+      return *value ? *value : "<string conversion failed>";
+}
+
 class EDFParser: ObjectWrap
 {
 private:
@@ -54,7 +58,10 @@ public:
     HandleScope scope;
     EDFParser* hw = ObjectWrap::Unwrap<EDFParser>(args.This());
     hw->m_count++;
-    Local<String> result = String::New("PARSE MY EDF");
+    // for now, just return the first parameter as a string
+    String::Utf8Value str(args[0]);
+    const char* cstr = ToCString(str);
+    Local<String> result = String::New(cstr);
     return scope.Close(result);
   }
 
