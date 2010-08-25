@@ -1,0 +1,19 @@
+***************
+*** 1602,1608 ****
+              CmdWrite("\n");
+              CmdWrite(DASHES);
+  
+              LineSpell();
+  
+              EditSetup();
+              m_pChild = m_pEdit;
+--- 1602,1610 ----
+              CmdWrite("\n");
+              CmdWrite(DASHES);
+  
++ #ifdef HAVE_LIBASPELL
+              LineSpell();
++ #endif
+  
+              EditSetup();
+              m_pChild = m_pEdit;

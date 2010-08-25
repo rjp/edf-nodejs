@@ -1,0 +1,200 @@
+Version 0.96c, 26/01/05
+
+- Fixed reply to user blank bug
+
+Version 0.96c, 25/01/05
+
+- Added spell check option to confirms
+- Added override option to multi-line edit
+- Fixed seeing same message twice bug?
+
+Version 0.96b, 01/12/04
+
+- Added aspell support
+
+Version 0.96a, 21/07/04
+
+- Added numeric ID lookup to tabbed menus
+- Prevented deleted folders from being shown in the folder list
+
+Version 0.96, 26/03/04
+
+- Changed MessageMenu 's' option to free form search
+
+Version 0.96, 01/02/04
+
+- Added Game and GameFactory
+
+Version 0.95a4, 21/11/03
+
+- Fixed reply move quantity bug
+
+Version 0.95a3, 16/11/03
+
+- Fixed annotation delete view for admin users
+
+Version 0.95a1, 13/11/03
+
+- Fixed minvalue float bug
+
+Version 0.95a, 12/11/03
+
+- Added float votes
+
+Version 0.95, 09/11/03
+
+- Added integer and percent value votes
+
+Version 0.94e, 23/09/03
+
+- Added task display and manipulation
+
+Version 0.94c, 12/06/03
+
+- Removed drop connection menu option for non-admin
+
+Version 0.94b, 11/06/03
+
+- Fixed custom colours
+
+Version 0.94a, 10/06/03
+
+- Added EDFToMatch
+- Added menus for free-form text searching and marking rules
+
+Version 0.94, 09/06/03
+
+- Retrofitted MatchToEDF
+
+Version 0.93a, 24/04/03
+
+- Removed service active / inactive extra line
+
+Version 0.93, 13/11/02
+
+- Fixed CmdCentre problem for big lines
+
+Version 0.92c, 15/08/02
+
+- Added delete message display check as well as private message check for admin users
+
+Version 0.92a, 12/07/02
+
+- Changed client string creation functions
+
+Version 0.92a, 05/06/02
+
+- Fixed Busy message overwrite problem
+- Added seconds display to long time format
+- Fixed unsubscribe in new message mode bug
+
+Version 0.92, 14/05/02
+
+- Removed references to CmdServerVersion in preference to ProtocolVersion from ua.h
+
+Version 0.92, 01/05/02
+
+- UTF8 display setting added to details menu (daemon only)
+- All menu / login start timing moved to CmdInput function
+
+Version 0.91a, 12/04/02
+
+- CmdShutdown returns codepage to original setting (Win32 only)
+
+Version 0.91, 03/04/02
+
+- Experimental UTF8 support (Win32 and Unix with latest ncurses only, mods for _XOPEN_SOURCE_EXTENDED done)
+
+Version 0.90h, 08/03/02
+
+- Changed services code in CmdUserPage to reflect new protocol
+
+Version 0.90g, 26/02/02
+
+- Busy menu option moved inside shadow login check
+
+Version 0.90g, 25/02/02
+
+- Fixed divert flag for user_contact resend in CmdUserPage
+
+Version 0.90g, 20/02/02
+
+- Shadow login announces only shown to admin, self and with dev options on
+
+Version 0.90f, 15/02/02
+
+- Changed voted flag for anonymous vote compatibility
+- 'H' on menus during shadow login
+- [Caught-Up] addition to message_add announcement
+- Added user list cache shadow tracking
+
+Version 0.90f, 13/02/02
+
+- Fixed shadow ID printout bug in CmdUserWho?
+
+Version 0.90e, 11/02/02
+
+- Fixed max flag calculation in CmdUserWho
+
+Version 0.90e, 08/02/02
+
+- Changed subtype code to look at cached folder list instead of user folders section
+- Fixed temp subscription
+
+Version 0.90e, 06/02/02
+
+- Changed to message_move / message_delete code in CmdAnnounceShow
+
+Version 0.90e, 05/02/02
+
+- Fixed movetype / deletetype field retrival in CmdAnnounceShow for message_delete / message_move (thankyou sirhC)
+
+Version 0.90e, 01/02/02
+
+- Added requestlog command line / config flag
+- Added any / all fields boolean to MessageSearchMenu (v2.6 servers only)
+- Added single session folder_subscribe support (v2.6 servers only)
+
+Version 0.90d, 20/01/02
+
+- Added view only option to folder subscribe menu
+
+Version 0.90c, 16/01/02
+
+- Added LOGIN_SHADOW flag check to CmdAnnounceProcess to user_login / user_logout announcements
+- Fixed tab complete problems for paging prompt
+
+Version 0.90c, 14/01/02
+
+- Altered CmdMessageAddFields toid / toname field additions to request
+
+Version 0.90c, 12/01/02
+
+- Change user_logout / user_status / channel_send announcements to UserEmote calls
+
+Version 0.90b, 09/01/02
+
+- Added talk aware time menus (main, folder / message, admin)
+
+Version 0.90a, 08/01/02
+
+- More work on talk code (v2.6 servers only)
+
+Version 0.90a, 05/01/02
+
+- Expanded 'B' main menu option to full busy / status message menu (case level only)
+- Changed Cmd FolderView / CmdFolderList to MessageTree for use with channels
+
+Version 0.90, 03/01/02
+
+- Changed tempnam to mkstemp in Cmdtext (Unix)
+- Added service authentication on startup
+
+Version 0.90, 02/01/02
+
+- Added service support to paging
+- Fixed agent type bug in UserEditMenu
+
+Version 0.90, 12/12/01
+
+- Cut code over from v0.87h

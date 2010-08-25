@@ -1,0 +1,886 @@
+
+ua.cpp,183
+bool NameValid(26,680
+char *AccessName(AccessName74,1731
+char *SubTypeStr(SubTypeStr105,2238
+int SubTypeInt(124,2543
+int ProtocolVersion(143,2894
+int ProtocolCompare(148,2995
+
+Conn/Conn.cpp,2465
+#define SECURE_OFF 44,860
+#define SECURE_FLAG 45,881
+#define SECURE_INIT 47,927
+#define SECURE_ON 48,949
+#define SOCKET_ERROR 51,982
+#define INVALID_SOCKET 52,1006
+#define closesocket 53,1032
+#define ioctlsocket 54,1058
+#define EWOULDBLOCK 60,1161
+int Conn::m_iWidth 65,1226
+bool Conn::m_bWSAStartup 68,1284
+SSL_CTX *Conn::m_pContext Conn::m_pContext72,1367
+long Conn::m_lMaxID 75,1440
+#define __FUNCTION__ 79,1540
+#define DEBUG_ERROR(83,1595
+#define DEBUG_ERRORSOCK(87,1671
+#define DEBUG_ERRORSSL(99,1904
+#define BUFFER_SIZE 113,2299
+int ConnVerify(118,2397
+void ConnCertifyData(172,3763
+void ConnCertify(206,4560
+Conn::Conn(328,8424
+Conn::~Conn(374,9082
+bool Conn::Connect(399,9521
+bool Conn::Bind(486,11420
+Conn *Conn::Accept(Conn::Accept514,11902
+bool Conn::Disconnect(566,12772
+bool Conn::AcceptReset(597,13263
+bool Conn::AcceptCheck(616,13606
+long Conn::ID(643,14150
+bool Conn::Connected(648,14188
+int Conn::State(653,14244
+long Conn::Timeout(665,14397
+void Conn::Timeout(670,14445
+bool Conn::SetSecure(676,14549
+bool Conn::GetSecure(724,15456
+char *Conn::Error(Conn::Error733,15567
+char *Conn::Hostname(Conn::Hostname739,15627
+unsigned long Conn::Address(744,15679
+char *Conn::AddressStr(Conn::AddressStr749,15736
+int Conn::Port(754,15789
+unsigned long Conn::ConnectTime(759,15830
+unsigned long Conn::UpdateTime(764,15895
+bool Conn::UpdateTime(769,15958
+double Conn::Sent(775,16048
+double Conn::Recieved(780,16092
+void *Conn::Data(Conn::Data785,16144
+bool Conn::Data(790,16187
+bool Conn::StringToAddress(797,16339
+bool Conn::CIDRToRange(843,17548
+char *Conn::AddressToString(Conn::AddressToString925,19489
+bool Conn::ValidHostname(946,20035
+bool Conn::SetSocket(975,20626
+void Conn::Close(1046,22320
+SOCKET Conn::Socket(1103,23573
+bool Conn::UseTimeout(1108,23621
+bool Conn::UseTimeout(1116,23766
+int Conn::Type(1178,25133
+#define SELECT_RETURN 1183,25174
+#define CLOSE_RETURN(1192,25336
+bool Conn::Read(1199,25500
+long Conn::ReadBuffer(1634,37897
+long Conn::Release(1654,38251
+bool Conn::Write(1689,38846
+bool Conn::Write(1696,39004
+long Conn::WriteBuffer(1745,40045
+bool Conn::FlagSecure(1751,40203
+Conn *Conn::Create(Conn::Create1773,40564
+int Conn::GetError(1783,40695
+SOCKADDR_IN *Conn::Init(Conn::Init1793,40815
+bool Conn::SetSock(2003,45725
+int Conn::Select(2028,46190
+void Conn::SetError(2110,48396
+bool Conn::SecureInit(2191,50136
+void Conn::SetErrorSSL(2224,50718
+
+Conn/EDFConn.cpp,265
+EDFConn::EDFConn(19,409
+EDFConn::~EDFConn(27,504
+bool EDFConn::Connect(33,582
+bool EDFConn::Connected(79,1360
+EDF *EDFConn::Read(EDFConn::Read85,1441
+bool EDFConn::Write(273,6569
+long EDFConn::Buffer(305,7345
+Conn *EDFConn::Create(EDFConn::Create311,7458
+
+EDF/EDF.cpp,3280
+EDF::EDF(21,312
+EDF::EDF(34,477
+EDF::EDF(47,670
+EDF::~EDF(59,795
+bool EDF::Get(77,1177
+bool EDF::Get(88,1318
+bool EDF::Get(115,1743
+bool EDF::Get(143,2261
+bool EDF::Get(148,2347
+bool EDF::Get(172,2968
+int EDF::TypeGet(197,3654
+int EDF::TypeGet(225,4203
+bool EDF::Set(258,4923
+bool EDF::Set(267,5068
+bool EDF::Set(276,5212
+bool EDF::Set(285,5359
+bool EDF::Set(294,5501
+bool EDF::Set(303,5660
+bool EDF::Add(314,5874
+bool EDF::Add(324,6150
+bool EDF::Add(334,6416
+bool EDF::Add(344,6672
+bool EDF::Add(354,6923
+bool EDF::Delete(365,7222
+bool EDF::GetChild(390,7664
+bool EDF::GetChild(413,8141
+bool EDF::GetChild(438,8675
+bool EDF::GetChild(444,8814
+bool EDF::GetChild(463,9217
+bool EDF::GetChild(482,9646
+bool EDF::GetChildBool(501,10053
+int EDF::TypeGetChild(538,10833
+int EDF::TypeGetChild(573,11646
+bool EDF::SetChild(609,12460
+bool EDF::SetChild(629,13001
+bool EDF::SetChild(649,13537
+bool EDF::SetChild(669,14060
+bool EDF::SetChild(689,14593
+bool EDF::SetChild(709,15106
+bool EDF::SetChild(729,15652
+bool EDF::SetChild(749,16167
+bool EDF::SetChild(808,17764
+bool EDF::AddChild(848,18537
+bool EDF::AddChild(859,18842
+bool EDF::AddChild(870,19146
+bool EDF::AddChild(881,19453
+bool EDF::AddChild(892,19761
+bool EDF::AddChild(903,20063
+bool EDF::AddChild(914,20367
+bool EDF::AddChild(947,21369
+bool EDF::AddChild(952,21492
+bool EDF::DeleteChild(994,22590
+int EDF::Children(1015,22938
+bool EDF::Root(1022,23062
+bool EDF::Child(1031,23136
+bool EDF::Child(1047,23394
+bool EDF::Child(1063,23667
+bool EDF::IsChild(1079,23933
+bool EDF::First(1095,24260
+bool EDF::Last(1111,24505
+bool EDF::Next(1127,24748
+bool EDF::Prev(1158,25421
+bool EDF::Parent(1189,26041
+bool EDF::Iterate(1204,26192
+bool EDF::SortReset(1271,28394
+bool EDF::SortAddSection(1281,28586
+bool EDF::SortAddKey(1286,28684
+bool EDF::SortParent(1291,28796
+bool EDF::Sort(1303,28947
+bool EDF::Sort(1310,29092
+long EDF::Read(1324,29338
+long EDF::Read(1330,29467
+#define VALID_CHAR 1343,29684
+#define IS_SPACE 1346,29721
+#define PRINT_POS 1349,29824
+#define WHITE_SPACE(1352,29891
+#define PARSE_SIZE 1364,30153
+#define PARSE_ERROR(1366,30176
+#define BYTES_VALUE 1374,30408
+long EDF::Read(1403,30897
+bytes *EDF::Write(EDF::Write2025,49542
+bytes *EDF::Write(EDF::Write2050,49970
+bool EDF::Copy(2083,50609
+bool EDF::GetCopy(2137,51998
+bool EDF::GetCopy(2146,52089
+bool EDF::TempMark(2154,52153
+bool EDF::TempUnmark(2163,52235
+EDFElement *EDF::GetCurr(EDF::GetCurr2178,52378
+bool EDF::SetCurr(2184,52441
+bool EDF::MoveTo(2213,52880
+bool EDF::MoveFrom(2222,53016
+int EDF::Depth(2232,53157
+int EDF::Position(2252,53404
+long EDF::Storage(2281,53889
+void EDF::init(2298,54086
+bool EDF::sortAdd(2312,54267
+bool EDF::sortDelete(2351,55273
+bool EDFToFile(2479,58969
+EDF *FileToEDF(FileToEDF2505,59538
+bool EDFPrint(2535,60109
+bool EDFPrint(2540,60199
+bool EDFPrint(2556,60473
+bool EDFPrint(2577,60889
+bool EDFPrint(2621,61661
+bool debugEDFPrint(2637,61976
+bool debugEDFPrint(2642,62079
+bool debugEDFPrint(2658,62360
+bool debugEDFPrint(2663,62480
+bool debugEDFPrint(2668,62607
+bool XMLPrint(2694,63119
+int EDFMax(2708,63426
+int EDFSetStr(2745,64209
+int EDFSetStr(2778,64927
+bool EDFFind(2803,65571
+int EDFDelete(2844,66554
+
+EDF/EDFElement.cpp,2412
+#define CHILD_INC 18,293
+EDFElementTypeException::EDFElementTypeException(20,315
+EDFElementTypeException::~EDFElementTypeException(25,427
+char *EDFElementTypeException::getMessage(EDFElementTypeException::getMessage30,509
+EDFElement::EDFElement(36,582
+EDFElement::EDFElement(41,642
+EDFElement::EDFElement(46,722
+EDFElement::EDFElement(52,862
+EDFElement::EDFElement(58,1001
+EDFElement::EDFElement(64,1138
+EDFElement::EDFElement(70,1277
+EDFElement::EDFElement(75,1398
+EDFElement::EDFElement(81,1562
+EDFElement::EDFElement(87,1725
+EDFElement::EDFElement(93,1886
+EDFElement::~EDFElement(99,2049
+char *EDFElement::getName(EDFElement::getName149,3149
+int EDFElement::getType(159,3274
+char *EDFElement::getValueStr(EDFElement::getValueStr164,3324
+bytes *EDFElement::getValueBytes(EDFElement::getValueBytes212,4463
+long EDFElement::getValueInt(257,5452
+double EDFElement::getValueFloat(273,5772
+bool EDFElement::set(289,6096
+bool EDFElement::setValue(302,6275
+bool EDFElement::setValue(335,7029
+bool EDFElement::setValue(368,7808
+bool EDFElement::setValue(401,8483
+bool EDFElement::setValue(414,8648
+bool EDFElement::add(428,8818
+bool EDFElement::remove(433,8929
+bool EDFElement::moveFrom(469,10074
+bool EDFElement::moveTo(506,11034
+int EDFElement::children(511,11145
+EDFElement *EDFElement::child(EDFElement::child536,11672
+EDFElement *EDFElement::child(EDFElement::child546,11844
+EDFElement *EDFElement::child(EDFElement::child563,12147
+int EDFElement::child(585,12701
+EDFElement *EDFElement::parent(EDFElement::parent602,12958
+SortElement *g_pSort g_pSort607,13017
+#define SORT_CHILD(609,13047
+#define IS_NUM(618,13225
+int sortlist(621,13310
+bool EDFElement::sort(780,18472
+bool EDFElement::copy(807,19067
+long EDFElement::storage(853,20235
+bytes *EDFElement::write(EDFElement::write858,20292
+void EDFElement::print(935,22238
+bool EDFElement::validName(963,22733
+bool EDFElement::add(974,22855
+bool EDFElement::find(1075,25428
+bool EDFElement::remove(1096,25796
+void EDFElement::parent(1136,26693
+void EDFElement::debugprint(1141,26769
+void EDFElement::init(1198,27945
+#define findcomp(1229,28563
+int EDFElement::find(1232,28747
+bytes *EDFElement::addLiterals(EDFElement::addLiterals1294,30336
+void EDFElement::removeLiterals(1371,32477
+long EDFElement::storage(1424,33896
+long EDFElement::write(1495,35584
+void EDFElement::childList(1684,40851
+
+client/CliFolder.cpp,102
+bool FolderGet(25,699
+int FolderGet(94,2427
+bool FolderGet(108,2744
+bool MessageInFolder(121,3067
+
+client/CliTalk.cpp,106
+bool ChannelGet(25,697
+int ChannelGet(94,2448
+bool ChannelGet(108,2777
+bool MessageInChannel(121,3109
+
+client/CliUser.cpp,66
+bool UserGet(30,918
+int UserGet(153,4526
+bool UserGet(164,4760
+
+qUAck/CmdIO.cpp,979
+int m_iWidth 27,731
+char m_cColours[m_cColours28,816
+bool m_bHardWrap 29,836
+bool m_bDisplay 35,1015
+char m_cColour 36,1039
+byte *m_pBuffer m_pBuffer38,1063
+int m_iBufferLen 39,1087
+FILE *m_fLogFile m_fLogFile41,1110
+bool CmdColour(44,1158
+bool CmdRowInc(69,1452
+byte CmdInputGet(122,2418
+int CmdInputLen(146,2932
+byte CmdInputChar(151,2979
+int CmdInputRelease(161,3125
+#define RET_CHECK 208,4361
+int CmdSpace(223,4632
+int CmdWrite(328,7211
+int CmdWrite(500,11570
+int CmdWrite(510,11696
+int CmdWrite(515,11796
+int CmdWrite(525,11922
+int CmdWrite(530,12014
+void CmdWidth(537,12205
+int CmdWidth(542,12258
+void CmdHeight(547,12298
+int CmdHeight(552,12355
+void CmdHighlight(557,12397
+bool CmdColourSet(562,12466
+void CmdHardWrap(585,12904
+void CmdUTF8(590,12970
+bool CmdUTF8(595,13020
+void CmdPageOn(600,13059
+void CmdPageOff(611,13186
+bool CmdLogOpen(622,13315
+bool CmdLogClose(636,13493
+void CmdEDFPrint(648,13622
+void CmdEDFPrint(669,14014
+
+qUAck/CmdInput.cpp,2208
+#define ENTER_TEXT 34,833
+#define CMD_LINE_RETEND 36,913
+#define CMD_LINE_WRAPSPACE 37,940
+#define CMD_LINE_WRAPNOSPACE 38,970
+#define LINE_DATA 40,1004
+long CmdInput::m_lMenuTime 42,1030
+long CmdInput::m_lMenuTimeOffset 43,1063
+int CmdInput::m_iMenuLevel 44,1102
+bool CmdInput::m_bMenuCase 45,1146
+int CmdInput::m_iMenuStatus 46,1183
+int CmdInput::m_iHardWrap 47,1217
+bool CmdInput::m_bSpellCheck 48,1249
+bool CmdInput::m_bSetup 50,1290
+CmdInput *CmdInput::m_pAbort CmdInput::m_pAbort51,1324
+char g_szConfigDir[g_szConfigDir54,1387
+AspellConfig *g_pConfig g_pConfig55,1413
+AspellSpeller *g_pSpeller g_pSpeller56,1446
+void SpellConfig(60,1514
+int MenuSort(84,1986
+CmdInput::CmdInput(108,2495
+CmdInput::CmdInput(114,2661
+CmdInput::CmdInput(119,2866
+CmdInput::CmdInput(124,3095
+CmdInput::~CmdInput(140,3424
+int CmdInput::Type(179,4296
+bool CmdInput::Show(184,4346
+byte CmdInput::Process(355,9706
+bool CmdInput::MenuAdd(497,13588
+bool CmdInput::MenuValue(552,15157
+bool CmdInput::MenuDefault(600,16319
+byte *CmdInput::LineData(CmdInput::LineData629,16892
+void CmdInput::Shutdown(699,18881
+bool CmdInput::LineInit(706,18961
+int CmdInput::LineValue(718,19160
+void CmdInput::MenuTime(732,19552
+long CmdInput::MenuTime(740,19688
+void CmdInput::MenuLevel(745,19766
+int CmdInput::MenuLevel(754,19901
+void CmdInput::MenuCase(759,19961
+bool CmdInput::MenuCase(766,20053
+void CmdInput::MenuStatus(771,20112
+int CmdInput::MenuStatus(780,20252
+void CmdInput::HardWrap(785,20314
+int CmdInput::HardWrap(803,20575
+void CmdInput::SpellCheck(808,20633
+bool CmdInput::SpellCheck(815,20750
+void CmdInput::Setup(820,20813
+void CmdInput::LineSetup(875,22256
+void CmdInput::EditSetup(926,23678
+bool CmdInput::MenuFind(950,24243
+byte CmdInput::MenuProcess(975,24649
+void CmdInput::MenuOptions(1064,26667
+void CmdInput::ShowOptions(1075,26792
+byte CmdInput::LineProcess(1148,28795
+int CmdInput::LineSpell(1893,53093
+int CmdInput::CheckString(1911,53432
+#define BREAK 1968,55012
+char *CmdInput::NextWord(CmdInput::NextWord1970,55074
+char *szEndings[szEndings2026,56597
+bool CmdInput::CheckWord(2031,56772
+EDF *CmdInput::SuggestWords(CmdInput::SuggestWords2104,58350
+
+qUAck/CmdMenu.cpp,2892
+char *m_szAttachmentDir m_szAttachmentDir44,1063
+int /*m_iPrevFolder = -1, */ m_iMsgPos 46,1098
+Game *g_pGame g_pGame48,1168
+bool CmdTabReset(54,1322
+bool CmdTabNext(78,1731
+bool CmdTabMatch(105,2288
+char *CmdTab(CmdTab143,3613
+char *CmdFolderTab(CmdFolderTab231,5764
+char *CmdChannelTab(CmdChannelTab236,5931
+char *CmdUserTab(CmdUserTab241,6099
+char *CmdUserLoginTab(CmdUserLoginTab246,6264
+char *CmdAgentLoginTab(CmdAgentLoginTab251,6434
+char *CmdServiceTab(CmdServiceTab256,6605
+void MatchAdd(261,6773
+void MatchClose(354,9288
+EDF *MatchToEDF(MatchToEDF401,10251
+char *EDFToMatch(EDFToMatch548,14301
+char *EDFToMatchOp(EDFToMatchOp611,16420
+char *EDFToMatch(EDFToMatch683,18059
+CmdInput *CmdMain(CmdMain688,18144
+CmdInput *CmdFolder(CmdFolder799,21443
+CmdInput *CmdAdmin(CmdAdmin1057,30095
+CmdInput *CmdFolderEdit(CmdFolderEdit1105,31510
+CmdInput *CmdUserEdit(CmdUserEdit1153,33011
+void CmdReplyShow(1309,38452
+int CmdAnnounceShow(1314,38533
+CmdInput *CmdInputSetup(CmdInputSetup2367,77468
+char CmdMessageInput(2593,85153
+int CmdWholistInput(2652,86745
+void CmdContentView(2752,89116
+char *URLToken(URLToken2780,89727
+int CmdURLList(2834,91264
+int CmdContentList(2883,92346
+bool CmdMessageRequest(3037,96871
+int MessageSearchMenu(3178,100913
+bool MessageMoveMenu(3581,113015
+bool MessageDeleteMenu(3662,114932
+bool MessageMarkMenu(3754,117333
+void ContentMenu(4204,131540
+void MessageJumpMenu(4340,135402
+void FolderMenu(4430,137442
+bool FolderJoinMenu(4980,155169
+bool UserEditDetail(5018,155962
+bool UserFolderMenu(5073,157169
+void CmdColourSet(5162,159916
+bool WholistDefaultMenu(5247,162057
+void CmdOptionMenu(5275,162728
+bool CmdOptionToggle(5283,162990
+int CmdAnnounceToggle(5295,163237
+void AlertsMenu(5314,163603
+bool UserEditMenu(5429,167152
+bool FolderEditMenu(6284,195985
+bool UserListMenu(6646,206920
+void FolderListMenu(6899,213144
+void LocationEditMenu(7001,215541
+void LocationsMenu(7093,218409
+void ConnectionMenu(7277,224402
+EDF *DirectRequestMenu(DirectRequestMenu7360,226720
+int TaskDayMenu(7406,228423
+void TaskMenu(7458,229353
+void AdminMenu(7608,233644
+void HelpMenu(7973,245294
+bool PageHistoryMenu(7977,245319
+void UserWhoMenu(8050,247274
+bool TalkJoinMenu(8071,247668
+bool TalkCommandMenu(8091,247932
+bool TalkMenu(8230,251651
+bool TalkMenuOld(8284,252986
+bool PageMenu(8433,257677
+void FolderPrioritiesMenu(8606,262794
+void MessageRulesMenu(8662,264376
+void MessageMenu(8769,267034
+void BulletinMenu(8857,269577
+void BusyMenu(8915,271230
+void GameMenu(8968,272518
+void MainMenu(9113,276637
+bool CmdAttachmentDir(9396,284354
+char *CmdAttachmentDir(CmdAttachmentDir9403,284481
+int MessagePos(9408,284545
+int MessageCount(9447,285350
+void NewFeatures(9476,285994
+bool ServiceActivate(9492,286563
+void DefaultWholist(9542,287808
+bool CreateUserMenu(9564,288286
+
+qUAck/CmdProcess.cpp,744
+int m_iFolderID 38,925
+int m_iChannelID 39,1011
+bool CmdAnnounceProcess(41,1037
+void CmdExtraVote(346,12317
+void CmdExtraAttachment(367,12742
+bool CmdExtraFields(422,14159
+bool CmdMessageAddFields(507,16553
+bool CmdMessageAdd(913,29374
+bool CmdMessageGoto(1032,32627
+char CmdUserPageTo(1415,45468
+bool CmdUserPageFields(1682,54081
+bool CmdUserPage(1696,54355
+void CmdOptionSet(2042,64101
+void CmdValueSet(2085,65250
+int CmdFolderJoin(2127,66574
+bool CmdFolderLeave(2210,68498
+int CmdCurrFolder(2248,69595
+void CmdCurrFolder(2253,69648
+int CmdCurrMessage(2258,69720
+void CmdCurrMessage(2263,69775
+bool CmdMessageMark(2269,69936
+bool CmdChannelLeave(2311,71089
+bool CmdChannelJoin(2364,72197
+int CmdCurrChannel(2420,73308
+
+qUAck/CmdShow.cpp,1383
+char *DAYS[DAYS38,890
+void CmdTitle(40,961
+void CmdField(47,1070
+void CmdField(68,1456
+void CmdField(76,1628
+void CmdTime(81,1753
+void CmdValue(89,1941
+void CmdMessageTreeAccess(97,2133
+int CmdSubList(114,3019
+char *NumPos(NumPos241,6634
+char AccessColour(262,7021
+char *GenderObject(GenderObject291,7511
+char *GenderType(GenderType310,7848
+void StrTime(327,8119
+bool StrValueAdd(410,9733
+void StrValue(430,10188
+bool IsSmiley(555,13618
+char *UserEmote(UserEmote570,13905
+bool CmdRetroNames(619,15184
+char *CmdRetroName(CmdRetroName627,15323
+bool CmdRetroMenus(645,15567
+void TrimFields(654,15788
+bool CmdSystemLogin(685,16764
+void CmdSystemView(759,18387
+#define LOCLIST_COL 1017,27217
+void CmdLocationList(1019,27243
+void CmdHelpList(1151,31145
+void CmdHelpView(1189,32013
+void CmdMessageTreeList(1260,33798
+void CmdMessageTreeView(1677,47721
+void CmdMessageList(1934,55357
+void CmdMessageView(2054,59008
+void CmdChannelList(2818,82592
+void CmdChannelView(2888,84557
+void CmdUserList(2998,87935
+bool CmdUserListMatch(3064,90123
+void CmdUserWho(3111,91403
+void CmdUserLast(3742,112123
+void CmdUserLogoutList(3871,115986
+void CmdUserViewDetail(3923,117201
+void CmdUserView(3965,118673
+void CmdUserStats(4671,140733
+void CmdUserPageView(4881,146712
+bool CmdCentre(4950,148337
+void CmdBanner(5063,151119
+void CmdTaskList(5077,151324
+
+qUAck/CmdTable.cpp,433
+bool CmdTable::m_bDoubleReturn 32,860
+CmdTable::CmdTable(34,903
+CmdTable::~CmdTable(82,1852
+bool CmdTable::AddHeader(101,2154
+bool CmdTable::SetFlag(124,2687
+bool CmdTable::SetValue(154,3265
+bool CmdTable::SetValue(198,4690
+bool CmdTable::AddFooter(207,4883
+bool CmdTable::AddKey(252,5810
+bool CmdTable::Flush(285,6406
+void CmdTable::MakeSets(308,6805
+void CmdTable::CheckHeaders(331,7540
+void CmdTable::Update(345,7713
+
+qUAck/Demon.cpp,273
+Demon::Demon(5,44
+char *Demon::ContentType(Demon::ContentType9,77
+EDF *Demon::StartOptions(Demon::StartOptions14,132
+EDF *Demon::KeyOptions(Demon::KeyOptions22,229
+bool Demon::Start(30,324
+bool Demon::Key(35,381
+bool Demon::Loop(42,448
+bool Demon::Action(49,507
+
+qUAck/Game.cpp,495
+Game::Game(11,106
+Game::~Game(19,200
+bool Game::IsRunning(34,453
+bool Game::IsEnded(39,515
+bool Game::IsCreator(44,573
+int Game::ServiceID(49,628
+EDF *Game::CreateOptions(Game::CreateOptions54,682
+EDF *Game::JoinOptions(Game::JoinOptions62,779
+EDF *Game::StartOptions(Game::StartOptions70,874
+bool Game::Create(78,970
+bool Game::Join(87,1113
+bool Game::Start(96,1252
+bool Game::End(103,1350
+bool Game::Action(110,1427
+bool Game::Subscribe(140,1947
+bool Game::Request(163,2410
+
+qUAck/GameFactory.cpp,30
+Game *FindGame(FindGame8,93
+
+qUAck/qUAck-daemon.cpp,919
+char *g_szEnvUser g_szEnvUser39,981
+bool m_bStartup 44,1074
+char *CLIENT_SUFFIX(CLIENT_SUFFIX60,1505
+char *CLIENT_PLATFORM(CLIENT_PLATFORM65,1552
+int CmdStartupEnv(70,1600
+void CmdStartup(79,1823
+void CmdReset(212,6056
+void CmdShutdown(216,6092
+int CmdType(220,6131
+bool CmdLocal(225,6168
+char *CmdUsername(CmdUsername230,6211
+int CmdInputGet(238,6350
+bool CmdInputCheck(317,8485
+int CmdOutput(327,8622
+void CmdRedraw(355,9148
+void CmdBack(360,9204
+void CmdReturn(371,9369
+void CmdAttr(377,9467
+void CmdForeground(473,11348
+void CmdBackground(477,11390
+void CmdBeep(481,11432
+void CmdWait(487,11528
+static void mappedtov4(493,11599
+#define        mappedtov4(513,12171
+bool ProxyHost(516,12211
+int CmdPID(569,13916
+bool CmdBrowser(574,13959
+char *CmdBrowser(CmdBrowser579,14030
+bool CmdBrowse(584,14075
+char CmdDirSep(589,14136
+bool CmdOpen(594,14178
+char *CmdText(CmdText599,14242
+
+qUAck/qUAck-unix.cpp,1411
+#define _XOPEN_SOURCE_EXTENDED19,602
+#define UNIX_INPUT_BUFFER 64,1370
+typedef void (*SIGHANDLER)SIGHANDLER66,1403
+SIGHANDLER m_pSIGWINCH 67,1437
+int m_iBackground 72,1535
+char *m_szBrowser m_szBrowser74,1582
+bool m_bBrowserWait 75,1609
+char *CLIENT_SUFFIX(CLIENT_SUFFIX94,2091
+char *CLIENT_PLATFORM(CLIENT_PLATFORM99,2137
+void initialise_curses(104,2192
+#define isprivate(116,2436
+void resize_curses(169,3731
+void CmdStartup(184,4150
+void CmdReset(218,4879
+void CmdShutdown(226,5022
+int CmdType(231,5075
+bool CmdLocal(236,5112
+char *CmdUsername(CmdUsername241,5154
+int CmdInputGet(247,5220
+bool CmdInputCheck(316,6972
+int powconv(322,7049
+unsigned char maskcheck(355,7804
+unsigned char *CmdEncode(CmdEncode377,8191
+unsigned int CmdDecode(457,10687
+int CmdOutput(554,13338
+void CmdRedraw(609,14545
+void CmdBack(619,14648
+void CmdReturn(628,14810
+void CmdAttr(641,14993
+int ColourMatch(706,16115
+void ColourReset(753,16847
+void CmdForeground(766,17290
+void CmdBackground(772,17393
+void CmdBeep(778,17496
+void CmdWait(783,17532
+bool procstat(798,17748
+utmp *utmpscan(utmpscan830,18709
+bool ProxyHostEntry(875,19802
+bool ProxyHost(918,20863
+void CmdRun(973,22213
+int CmdPID(1002,22853
+bool CmdBrowser(1007,22896
+char *CmdBrowser(CmdBrowser1015,23033
+bool CmdBrowse(1020,23085
+char CmdDirSep(1027,23195
+bool CmdOpen(1032,23237
+char *CmdText(CmdText1037,23301
+
+qUAck/qUAck-win32.cpp,966
+#define MAX_EVENTS 34,859
+#define ISRETURN(36,885
+UINT m_iConsoleOutput 41,1007
+int m_iDefBackground 42,1035
+char *m_szBrowser m_szBrowser44,1227
+bool m_bBrowserWait 45,1254
+char *CLIENT_SUFFIX(CLIENT_SUFFIX62,1641
+char *CLIENT_PLATFORM(CLIENT_PLATFORM67,1687
+void CmdStartup(72,1743
+void CmdReset(86,2015
+void CmdShutdown(113,3146
+int CmdType(124,3365
+bool CmdLocal(129,3402
+char *CmdUsername(CmdUsername134,3444
+int CmdInputGet(140,3510
+bool CmdInputCheck(291,9982
+int CmdOutput(297,10062
+void CmdRedraw(323,10690
+void CmdBack(327,10726
+void CmdReturn(349,11441
+void CmdAttr(412,13700
+void CmdForeground(479,14918
+void CmdBackground(533,15897
+void CmdBeep(587,16876
+void CmdWait(592,16934
+bool ProxyHost(597,16974
+void CmdRun(602,17027
+int CmdPID(616,17407
+bool CmdBrowser(621,17450
+char *CmdBrowser(CmdBrowser694,18968
+bool CmdBrowse(699,19020
+bool CmdOpen(706,19130
+char CmdDirSep(727,19572
+char *CmdText(CmdText732,19615
+
+qUAck/qUAck.cpp,2038
+#define SIGHUP 46,1044
+#define SIGUNUSED 49,1089
+char *m_szHome m_szHome52,1121
+int iPanic 54,1147
+char *m_szVersion m_szVersion56,1166
+char m_szClientName[m_szClientName57,1193
+bool m_bRequestWait 59,1221
+int m_iRequest 60,1251
+#define CLI_REFRESH_FOLDERS 62,1300
+#define CLI_REFRESH_MESSAGES 63,1331
+#define CLI_REFRESH_USERS 64,1363
+#define CLI_USER_RESET 65,1392
+EDFConn *m_pClient m_pClient69,1450
+EDF **m_pAnnounces m_pAnnounces71,1480
+int m_iNumAnnounces 72,1508
+bool m_bAnnounceFlush 73,1534
+EDF *m_pUser m_pUser75,1568
+EDF *m_pFolderList m_pFolderList76,1609
+EDF *m_pChannelList m_pChannelList77,1707
+EDF *m_pServiceList m_pServiceList78,1757
+EDF *m_pSystemList m_pSystemList79,1786
+bool m_bThinPipe 81,1816
+bool m_bScreenSize 82,1843
+int m_iLogLevel 83,1872
+char *m_szEditor m_szEditor85,1896
+char *CLIENT_NAME(CLIENT_NAME87,1924
+int BuildNum(98,2179
+char *BuildTime(BuildTime103,2224
+char *BuildDate(BuildDate108,2273
+void Panic(119,2477
+void CmdStartup(155,3161
+void CmdShutdown(176,3599
+bool CmdRefreshUsers(273,6336
+bool CmdRefreshServices(333,7995
+bool CmdRefreshChannels(345,8281
+void CmdFolderFlatten(362,8695
+bool CmdRefreshFolders(387,9201
+bool CmdRefreshMessages(578,15268
+void CmdRefresh(653,17477
+void CmdColours(675,17995
+void CmdUserSet(764,20262
+bool CmdUserReset(847,22823
+int CmdAnnounce(888,23718
+CmdInput *CmdInputLoop(CmdInputLoop909,24239
+bool CmdRequest(1079,28575
+bool CmdRequest(1084,28710
+bool CmdRequest(1089,28861
+bool CmdRequest(1094,29031
+byte CmdMenu(1341,35968
+byte CmdMenu(1350,36106
+bool CmdYesNo(1361,36281
+char *CmdLineStr(CmdLineStr1378,36668
+char *CmdLineStr(CmdLineStr1383,36877
+int CmdLineName(1396,37291
+int CmdLineTab(1585,41839
+int CmdLineUser(1590,42001
+int CmdLineFolder(1595,42237
+int CmdLineFolder(1600,42398
+int CmdLineChannel(1605,42583
+int CmdLineNum(1610,42694
+int CmdLineNum(1615,42843
+int CmdLineNum(1647,43501
+int CmdVersion(1660,43746
+char *CmdEditor(CmdEditor1683,44220
+int main(1688,44268
+
+useful/LeakTrace.cpp,1071
+#define FILEDESC 27,820
+#define SAVEBUFFER 35,1092
+#define SAVEVALUE 36,1115
+#define MAGIC 37,1141
+#define RETDEPTH 39,1176
+#define INITIALSIZE 45,1353
+#define STACKSET(48,1433
+#define STACKCHECK(53,1636
+static class LeakTracer 58,1791
+   struct Leak LeakTracer::Leak59,1818
+   LeakTracer(LeakTracer::LeakTracer80,2648
+   ~LeakTracer(LeakTracer::~LeakTracer127,3861
+} leakTracer;131,3936
+void* LeakTracer::registerAlloc 133,3953
+            firstFreeSpot 211,6486
+      int new_leaksCount 217,6639
+      leaks 219,6760
+      leaksCount 226,7040
+void LeakTracer::hexdump(230,7087
+void LeakTracer::registerFree 246,7560
+void LeakTracer::writeLeakReport(307,9328
+void LeakTracer::setStackTop(356,11004
+void LeakTracer::getAllocs(363,11163
+void leakSetStack(370,11384
+void leakSetStack1(375,11470
+void leakSetStack2(380,11557
+void leakGetAllocs(385,11644
+void* operator new(operator new402,11939
+void* operator new[] operator new[]407,12030
+void operator delete operator delete412,12123
+void operator delete[] operator delete[]417,12202
+
+useful/StackTrace.cpp,551
+#define MAX_STACK 10,112
+int StackTrace::m_iStackNum 11,134
+struct StackTrace::StackTraceNode StackTrace::m_pNodes[StackTrace::m_pNodes12,168
+char StackTrace::m_szCurrent[StackTrace::m_szCurrent13,236
+StackTrace::StackTrace(15,274
+StackTrace::~StackTrace(48,1233
+void StackTrace::update(59,1571
+int StackTrace::depth(64,1660
+char *StackTrace::file(StackTrace::file69,1717
+char *StackTrace::function(StackTrace::function74,1805
+int StackTrace::line(79,1901
+char *StackTrace::current(StackTrace::current84,1986
+void StackPrint(89,2047
+
+useful/useful.cpp,1377
+char *m_szDebugFile m_szDebugFile32,501
+FILE *g_fDebug g_fDebug33,529
+bool g_bDebugOpened 34,552
+int g_iDebug 35,581
+bytes::bytes(37,601
+bytes::bytes(43,658
+bytes::bytes(67,1015
+bytes::bytes(83,1250
+bytes::~bytes(107,1630
+byte *bytes::Data(bytes::Data112,1672
+byte bytes::Char(125,1850
+long bytes::Length(135,1974
+long bytes::Append(144,2094
+long bytes::Append(149,2185
+long bytes::Append(184,2928
+bytes *bytes::SubString(bytes::SubString192,3073
+int bytes::Compare(202,3237
+int bytes::Compare(207,3321
+int bytes::Compare(217,3519
+char *strmk(strmk285,4962
+char *strmk(strmk303,5404
+char *strmk(strmk324,5847
+char *strmk(strmk335,6027
+char *strtrim(strtrim346,6275
+char *streol(streol367,6803
+byte *memmk(memmk393,7169
+int memprint(409,7420
+int memprint(414,7542
+int memprint(419,7688
+int memprint(424,7852
+int memprint(429,8014
+int bytesprint(495,9342
+int bytesprint(500,9468
+#define SKIP_WS 505,9706
+#define SKIP_TOKEN 511,9768
+unsigned long memusage(521,9896
+byte *FileRead(FileRead621,12283
+long FileWrite(674,13443
+double gettick(718,14420
+long tickdiff(733,14690
+void MsgError(742,14828
+int debug(754,15176
+int debug(785,15732
+int debug(793,15877
+bool debugopen(801,16005
+bool debugclose(823,16376
+bool debugfile(842,16676
+FILE *debugfile(debugfile852,16797
+int debuglevel(857,16840
+int debuglevel(873,17104

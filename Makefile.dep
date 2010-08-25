@@ -1,0 +1,41 @@
+../Conn/Conn.o:	../Conn/Conn.cpp ../Conn/Conn.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h
+../Conn/EDFConn.o:	../Conn/EDFConn.cpp ../Conn/EDFConn.h ../Conn/Conn.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../EDF/EDF.h ../EDF/EDFElement.h
+../Conn/SMTPConn.o:	../Conn/SMTPConn.cpp ../Conn/SMTPConn.h ../Conn/Conn.h ../useful/useful.h
+
+../EDF/EDF.o:	../EDF/EDF.cpp ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h
+../EDF/EDFElement.o:	../EDF/EDFElement.cpp ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h
+
+../ua.o:   ../ua.cpp ../ua.h
+
+../client/UAClient.o:	../client/UAClient.cpp ../client/UAClient.h ../Conn/EDFConn.h ../Conn/Conn.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../EDF/EDF.h ../EDF/EDFElement.h ../ua.h
+
+../client/CliFolder.o:	../client/CliFolder.cpp ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../ua.h ../client/CliFolder.h
+../client/CliUser.o:	../client/CliUser.cpp ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../ua.h ../client/CliUser.h
+
+EDFItem.o:	../common/EDFItem.cpp ../common/EDFItem.h ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../db/DBTable.h
+	$(CC) $(CCFLAGS) -c $< -o $(@)
+EDFItemList.o:	../common/EDFItemList.cpp ../common/EDFItemList.h ../common/EDFItem.h ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../db/DBTable.h
+
+../common/Folder.o:	../common/Folder.cpp ../common/EDFItemList.h ../common/EDFItem.h ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../db/DBTable.h ../common/Tree.h ../common/MessageTreeItem.h ../common/TreeNodeItem.h ../common/TreeNodeItem.cpp ../common/MessageItem.h ../common/Folder.h ../common/FolderMessageItem.h ../ua.h
+../common/Talk.o:	../common/Talk.cpp ../common/EDFItemList.h ../common/EDFItem.h ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../db/DBTable.h ../common/Tree.h ../common/MessageTreeItem.h ../common/TreeNodeItem.h ../common/TreeNodeItem.cpp ../common/MessageItem.h ../common/Talk.h ../common/ChannelMessageItem.h ../ua.h
+../common/Tree.o:	../common/Tree.cpp ../common/EDFItemList.h ../common/EDFItem.h ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../db/DBTable.h ../common/Tree.h ../common/MessageTreeItem.h ../common/TreeNodeItem.h ../common/TreeNodeItem.cpp ../common/MessageItem.h ../ua.h
+../common/User.o:	../common/User.cpp ../common/EDFItemList.h ../common/EDFItem.h ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../db/DBTable.h ../common/User.h ../common/UserItem.h
+
+ChannelMessageItem.o:	../common/ChannelMessageItem.cpp ../ua.h ../common/ChannelMessageItem.h ../common/MessageTreeItem.h ../common/TreeNodeItem.h ../common/EDFItem.h ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../db/DBTable.h ../common/EDFItemList.h ../common/TreeNodeItem.cpp
+	$(CC) $(CCFLAGS) -c $< -o $(@)
+FolderMessageItem.o:	../common/FolderMessageItem.cpp ../ua.h ../common/FolderMessageItem.h ../common/MessageTreeItem.h ../common/TreeNodeItem.h ../common/EDFItem.h ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../db/DBTable.h ../common/EDFItemList.h ../common/TreeNodeItem.cpp
+	$(CC) $(CCFLAGS) -c $< -o $(@)
+MessageItem.o:	../common/MessageItem.cpp ../ua.h ../common/MessageItem.h ../common/TreeNodeItem.h ../common/EDFItem.h ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../db/DBTable.h ../common/EDFItemList.h ../common/TreeNodeItem.cpp ../common/MessageTreeItem.h
+	$(CC) $(CCFLAGS) -c $< -o $(@)
+MessageTreeItem.o:	../common/MessageTreeItem.cpp ../ua.h ../common/MessageTreeItem.h ../common/TreeNodeItem.h ../common/EDFItem.h ../EDF/EDF.h ../EDF/EDFElement.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../db/DBTable.h ../common/EDFItemList.h ../common/TreeNodeItem.cpp ../common/MessageItem.h
+	$(CC) $(CCFLAGS) -c $< -o $(@)
+UserItem.o:	../common/UserItem.cpp ../ua.h ../Conn/Conn.h ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../common/UserItem.h ../common/EDFItem.h ../EDF/EDF.h ../EDF/EDFElement.h ../db/DBTable.h
+	$(CC) $(CCFLAGS) -c $< -o $(@)
+
+../db/DBTable.o:      ../db/DBTable.cpp ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../db/DBTable.h ../db/db-common.h
+../db/db-MySQL.o:     ../db/db-MySQL.cpp ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h ../db/DBTable.h ../db/db-common.h
+
+../useful/LeakTrace.o:	../useful/LeakTrace.cpp ../useful/LeakTrace.h
+	$(CC) $(CCFLAGS) -DLEAKTRACEON -c $< -o $(@)
+../useful/StackTrace.o:	../useful/StackTrace.cpp ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h
+../useful/useful.o:	../useful/useful.cpp ../useful/useful.h ../useful/StackTrace.h ../useful/LeakTrace.h

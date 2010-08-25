@@ -1,0 +1,51 @@
+AC_INIT(ua.cpp, 0.96d)
+
+AC_CONFIG_HEADER(config.h)
+
+AC_PROG_MAKE_SET
+AC_PROG_CXX
+AC_ARG_WITH(ssl, [  --with-ssl              SSL enabled qUAck], SSL=-DCONNSECURE)
+AC_ARG_WITH(aspell, [  --with-aspell              aspell enabled qUAck], ASPELL=yes)
+AC_ARG_ENABLE(trace, [  --enable-trace          Debugging output], TRACE=-DBUILDTRACE)
+AC_ARG_ENABLE(scrollback, [  --enable-scrollback          Don't break scrollback], TRACE=-DLEAVE_SCROLLBACK)
+AC_HEADER_STDC
+AC_CHECK_HEADERS(curses.h cursesw.h ncurses/curses.h ncurses/cursesw.h ncursesw/curses.h ncursesw/ncursesw.h, break)
+
+AC_HEADER_TIME
+AC_CHECK_HEADERS(sys/time.h)
+
+if test "${SSL}"; then
+ AC_CHECK_LIB(ssl,SSL_new)
+ AC_CHECK_LIB(crypto,CRYPTO_malloc)
+fi
+
+if test "${ASPELL}"; then
+  AC_CHECK_LIB(aspell,new_aspell_config)
+fi
+
+dnl check for FreeBSD
+AC_EGREP_CPP(yes,
+[#ifdef __FreeBSD__
+ yes
+#endif
+], is_freebsd=-DFREEBSD, is_freebsd="")
+
+
+AC_CHECK_DECL(socklen_t)
+
+dnl check for getutent
+AC_CHECK_FUNC(getutent)
+AC_CHECK_FUNC(stricmp)
+AC_CHECK_FUNC(nanosleep)
+
+dnl check for ncurses
+AC_CHECK_LIB(ncurses, initscr)
+AC_CHECK_LIB(ncursesw, initscr)
+
+dnl our substitutions
+AC_SUBST(is_freebsd)
+AC_SUBST(LD_SSL)
+AC_SUBST(LD_CRYPTO)
+AC_SUBST(LIBS)
+
+AC_OUTPUT(Makefile.inc qUAck/Makefile)

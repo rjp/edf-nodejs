@@ -1,0 +1,12 @@
+--- CmdInput.cpp.orig   Wed Dec  1 12:39:48 2004
++++ CmdInput.cpp        Wed Dec  1 12:40:46 2004
+@@ -1602,7 +1602,9 @@
+             CmdWrite("\n");
+             CmdWrite(DASHES);
+ 
++#ifdef HAVE_LIBASPELL
+             LineSpell();
++#endif
+ 
+             EditSetup();
+             m_pChild = m_pEdit;
