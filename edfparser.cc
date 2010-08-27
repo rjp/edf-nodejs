@@ -97,6 +97,7 @@ public:
 
   static Handle<Value> Parse(const Arguments& args)
   {
+    unsigned int l_parsed=0, offset=0, t_parsed=0;
     HandleScope scope;
     EDFParser* hw = ObjectWrap::Unwrap<EDFParser>(args.This());
     hw->m_count++;
@@ -104,9 +105,19 @@ public:
     String::Utf8Value str(args[0]);
     const char* cstr = ToCString(str);
     EDF *pTest = new EDF();
-    pTest->Read(cstr);
-    json[0] = '\0';
-    recurse(pTest, 1, 0, 0);
+
+    // set up our array of trees - this is fudge
+    sprintf(json, "{\"trees\":[", l_parsed);
+    while (offset < strlen(cstr)) { // whilst we have characters left
+        char tmp[1048576];
+        strcpy(tmp, cstr+offset);
+        l_parsed = pTest->Read(tmp);
+        recurse(pTest, 1, 0, 0);
+        offset = offset + l_parsed;
+        strcat(json, ", ");
+        t_parsed++;
+    }
+    sprintf(json, "%s{\"end\":1}], \"parsed\":%d}", json, t_parsed);
     Local<String> result = String::New(json);
     return scope.Close(result);
   }
