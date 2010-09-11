@@ -107,7 +107,7 @@ public:
     EDF *pTest = new EDF();
 
     // set up our array of trees - this is fudge
-    sprintf(json, "{\"trees\":[", l_parsed);
+    sprintf(json, "{\"trees\":[");
     while (offset < strlen(cstr)) { // whilst we have characters left
         char tmp[1048576];
         strcpy(tmp, cstr+offset);
