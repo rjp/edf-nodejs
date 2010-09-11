@@ -6,6 +6,10 @@ EDF parser implemented as a synchronous node.js extension.
     # now you have the JSON-equivalent of your EDF
     e = eval('('+j+')');
 
+With this EDF
+
+    <edf="on"><test=42/></><reply="fish"><age=44/></>
+
 This is what you get back
 
     {"trees":[{"tag":"edf","value":"on", "children":[{"tag":"test","value":42, "end":1}], "end":1}, {"tag":"reply","value":"fish", "children":[{"tag":"age","value":44, "end":1}], "end":1}, {"end":1}], "parsed":2}
