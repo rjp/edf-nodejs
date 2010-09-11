@@ -1642,7 +1642,7 @@ long EDF::Read(const byte *pData, const long lDataLen, const int iProgress, cons
 												pPos++;
 											}
 
-											szParse = "after string value";
+											szParse = (char *)"after string value";
 										}
 										else if(isdigit(*pPos) || *pPos == '-')
 										{
@@ -1708,7 +1708,7 @@ long EDF::Read(const byte *pData, const long lDataLen, const int iProgress, cons
                                     }
                                  }
 
-											szParse = "EOD after number value";
+											szParse = (char *)"EOD after number value";
 										}
 									}
 								}
@@ -1825,7 +1825,7 @@ long EDF::Read(const byte *pData, const long lDataLen, const int iProgress, cons
 														   delete[] pValue;
 													   }
 
-													   szParse = "after XML value";
+													   szParse = (char *)"after XML value";
 												   }
 											   }
                                  }
@@ -1834,7 +1834,7 @@ long EDF::Read(const byte *pData, const long lDataLen, const int iProgress, cons
 								}
 								else
 								{
-									szParse = "EOD after name";
+									szParse = (char *)"EOD after name";
 								}
 
                         if(VALID_CHAR)
