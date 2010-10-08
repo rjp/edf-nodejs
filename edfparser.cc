@@ -97,7 +97,8 @@ public:
 
   static Handle<Value> Parse(const Arguments& args)
   {
-    unsigned int l_parsed=0, offset=0, t_parsed=0;
+    int l_parsed = 0;
+    unsigned int offset=0, t_parsed=0;
     HandleScope scope;
     EDFParser* hw = ObjectWrap::Unwrap<EDFParser>(args.This());
     hw->m_count++;
@@ -112,6 +113,12 @@ public:
         char tmp[1048576];
         strcpy(tmp, cstr+offset);
         l_parsed = pTest->Read(tmp);
+//        fprintf(stderr, "parsed %d\n", l_parsed);
+        if (l_parsed <= 0) {
+//            fprintf(stderr, "PARSE ERROR RETURNING BORK\n");
+            Local<String> result = String::New("-1");
+            return scope.Close(result);
+        }
         recurse(pTest, 1, 0, 0);
         offset = offset + l_parsed;
         strcat(json, ", ");
