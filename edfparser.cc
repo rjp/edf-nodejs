@@ -36,7 +36,18 @@ void recurse(EDF *tree, int root, int child, int depth)
                 sprintf(json,"%s%lf", json, dv);
                 break;
             default:
-                sprintf(json,"%s\"%s\"", json, szMessage);
+                int i = 0, j = 0, l = strlen(szMessage);
+                char tmp[1048576]; // 1M is enough, right?
+                // let's brute force this bugger
+                for(i=0; i<l; i++) {
+                    switch(szMessage[i]) {
+                        case '\n': tmp[j] = '\\'; j++; tmp[j] = 'n'; j++; break;
+                        case  '"': tmp[j] = '\\'; j++; tmp[j] = '"'; j++; break;
+                        default: tmp[j] = szMessage[i]; j++; break;
+                    }
+                }
+                tmp[j] = '\0';
+                sprintf(json,"%s\"%s\"", json, tmp);
                 break;
         }
 
