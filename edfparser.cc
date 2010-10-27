@@ -36,8 +36,12 @@ void recurse(EDF *tree, int root, int child, int depth)
                 sprintf(json,"%s%lf", json, dv);
                 break;
             default:
-                int i = 0, j = 0, l = strlen(szMessage);
+                int i = 0, j = 0, l = 0;
                 char tmp[1048576]; // 1M is enough, right?
+
+                if (szMessage) {
+                    l = strlen(szMessage);
+                }
                 // let's brute force this bugger
                 for(i=0; i<l; i++) {
                     switch(szMessage[i]) {
