@@ -1,0 +1,22 @@
+<edf/>
+<edf=2/>
+<edf="on"/>
+<request="tree"><edf/></>
+<request="tree"><edf=42/></>
+<request="tree"><edf="string"/></>
+<request="tree"><edf/></>
+<request="tree"><edf=42/></>
+<request="tree"><edf="string"/></>
+<request="tree"><edf="string"/><hhgttg=42/></>
+<request="tree"><edf="string"><cow="moo"/></></>
+<request="tree"><edf="tree"><inside=1/></edf><cow="tree"><inside=1/></></>
+<request="tree"><edf="tree"><inside=1/></><cow="tree"><inside=1/></></>
+<request="tree"><edf="tree"><inside=1/></><cow="moo"/><tree=42><moo="cow"/></></>
+<request="tree"><edf="tree"><inside=1/></><cow="moo"/><tree=42><moo="cow"/></></>
+<moo><cow><fish/></><donkey/></>
+<cow="\"Moo,\" said the cow"/>
+<cow="Moo < cow > afile"/>
+<edf="on"/><edf="off"/>
+<edf="on"><hamster="race"/></><edf="off"><hamster="baby"/></>
+<edf="on"></>
+<x-topper=10/>

@@ -1,0 +1,54 @@
+sys = require('sys');
+assert = require('assert');
+edf = require('edfparser');
+fs = require('fs');
+
+parser = new edf.EDFParser();
+
+function js2edf(tree) {
+    var edf = '<' + tree.tag;
+    if (tree.value != undefined) {
+        if (isNaN(parseFloat(tree.value))) {
+            if (tree.value.length > 0) {
+                edf = edf + '="' + tree.value + '"';
+            }
+        } else {
+            edf = edf + '=' + tree.value;
+        }
+    }
+    if (tree.children && tree.children.length > 0) {
+        var i;
+        edf = edf + '>';
+        for(i=0; i < tree.children.length; i++) {
+            edf = edf + js2edf(tree.children[i]);
+        }
+        edf = edf + '</>';
+    } else {
+        edf = edf + '/>';
+    }
+    return edf;
+}
+
+// { trees: [ { tag: 'edf', value: '', end: 1 }, { end: 1 } ] , parsed: 1 }
+function trees2edf(trees) {
+    return js2edf(trees.trees[0]); // fudge for testing
+}
+
+var test_strings = fs.readFileSync('testlines', 'utf8').split('\n');
+// why do we end up with a bogus empty string?
+
+for(var i=0; i < test_strings.length; i++) {
+    if (test_strings[i].length == 0) { continue; }
+
+	j = parser.parse(test_strings[i]);
+    if (j == -1) { throw("FATAL: "+test_strings[i]); }
+
+	e = JSON.parse(j);
+    var closure = test_strings[i];
+	
+	exports['reverse parse'] = function(test){
+	    test.expect(1);
+	    test.equals(closure, trees2edf(e), 'parse/reverse '+i+' matches');
+	    test.done();
+	}
+}
