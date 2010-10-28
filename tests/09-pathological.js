@@ -31,8 +31,14 @@ function js2edf(tree) {
 
 // { trees: [ { tag: 'edf', value: '', end: 1 }, { end: 1 } ] , parsed: 1 }
 function trees2edf(trees) {
-    return js2edf(trees.trees[0]); // fudge for testing
+    var edf = '';
+    for(var i=0; i < 1; i++) { // trees.parsed; i++) {
+        edf = edf + js2edf(trees.trees[i]);
+    }
+    return edf;
 }
+
+exports.pathological = {}
 
 var test_strings = fs.readFileSync('testlines', 'utf8').split('\n');
 // why do we end up with a bogus empty string?
@@ -40,15 +46,29 @@ var test_strings = fs.readFileSync('testlines', 'utf8').split('\n');
 for(var i=0; i < test_strings.length; i++) {
     if (test_strings[i].length == 0) { continue; }
 
-	j = parser.parse(test_strings[i]);
+	var j = parser.parse(test_strings[i]);
     if (j == -1) { throw("FATAL: "+test_strings[i]); }
 
-	e = JSON.parse(j);
-    var closure = test_strings[i];
+	var e = JSON.parse(j);
+    var wanted = test_strings[i];
+    var got = trees2edf(e);
+
+    if (i == 18) {
+        sys.puts(wanted);
+        sys.puts(j);
+        sys.puts(got);
+        sys.puts(wanted == got);
+    }
+
+    var tObj = new Object();
+    tObj.wanted = wanted;
+    tObj.got = got;
 	
-	exports['reverse parse'] = function(test){
+    var x = function(test){ // why aren't you closing?
 	    test.expect(1);
-	    test.equals(closure, trees2edf(e), 'parse/reverse '+i+' matches');
+        sys.puts(tObj.wanted+' == '+tObj.got+' => '+(tObj.wanted==tObj.got));
+	    test.equals(tObj.wanted, tObj.got, 'parse/reverse '+i+' matches');
 	    test.done();
 	}
+    exports.pathological['parse '+i] = x;
 }
