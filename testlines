@@ -9,7 +9,7 @@
 <request="tree"><edf="string"/></>
 <request="tree"><edf="string"/><hhgttg=42/></>
 <request="tree"><edf="string"><cow="moo"/></></>
-<request="tree"><edf="tree"><inside=1/></edf><cow="tree"><inside=1/></></>
+<request="tree"><edf="tree"><inside=1/></><cow="tree"><inside=1/></></>
 <request="tree"><edf="tree"><inside=1/></><cow="tree"><inside=1/></></>
 <request="tree"><edf="tree"><inside=1/></><cow="moo"/><tree=42><moo="cow"/></></>
 <moo><cow><fish/></><donkey/></>
@@ -17,6 +17,6 @@
 <cow="Moo < cow > afile"/>
 <edf="on"/><edf="off"/>
 <edf="on"><hamster="race"/></><edf="off"><hamster="baby"/></>
-<edf="on"></>
+<edf="on"/>
 <x-topper=10/>
 <folders><marking=13/><archiving=1/><rule=1><and><folderid=24/><keyword="php"/></></></>

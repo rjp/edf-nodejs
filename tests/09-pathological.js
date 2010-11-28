@@ -10,7 +10,8 @@ function js2edf(tree) {
     if (tree.value != undefined) {
         if (isNaN(parseFloat(tree.value))) {
             if (tree.value.length > 0) {
-                edf = edf + '="' + tree.value + '"';
+                var x = tree.value.replace(/"/g, "\\\"");
+                edf = edf + '="' + x + '"';
             }
         } else {
             edf = edf + '=' + tree.value;
@@ -32,7 +33,7 @@ function js2edf(tree) {
 // { trees: [ { tag: 'edf', value: '', end: 1 }, { end: 1 } ] , parsed: 1 }
 function trees2edf(trees) {
     var edf = '';
-    for(var i=0; i < 1; i++) { // trees.parsed; i++) {
+    for(var i=0; i < trees.parsed; i++) {
         edf = edf + js2edf(trees.trees[i]);
     }
     return edf;
@@ -42,6 +43,15 @@ exports.pathological = {}
 
 var test_strings = fs.readFileSync('testlines', 'utf8').split('\n');
 // why do we end up with a bogus empty string?
+
+function make_test(i, wanted, got) {
+    return function(test) {
+	    test.expect(1);
+//        sys.puts('W:'+wanted+' == '+got+' => '+(wanted==got));
+	    test.equals(wanted, got, 'parse/reverse '+i+' matches');
+	    test.done();
+    }
+}
 
 for(var i=0; i < test_strings.length; i++) {
     if (test_strings[i].length == 0) { continue; }
@@ -53,22 +63,6 @@ for(var i=0; i < test_strings.length; i++) {
     var wanted = test_strings[i];
     var got = trees2edf(e);
 
-    if (i == 18) {
-        sys.puts(wanted);
-        sys.puts(j);
-        sys.puts(got);
-        sys.puts(wanted == got);
-    }
-
-    var tObj = new Object();
-    tObj.wanted = wanted;
-    tObj.got = got;
-	
-    var x = function(test){ // why aren't you closing?
-	    test.expect(1);
-        sys.puts(tObj.wanted+' == '+tObj.got+' => '+(tObj.wanted==tObj.got));
-	    test.equals(tObj.wanted, tObj.got, 'parse/reverse '+i+' matches');
-	    test.done();
-	}
+    var x = make_test(i, wanted, got);
     exports.pathological['parse '+i] = x;
 }
