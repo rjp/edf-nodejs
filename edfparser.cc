@@ -16,7 +16,8 @@ const char* ToCString(const v8::String::Utf8Value& value) {
       return *value ? *value : "<string conversion failed>";
 }
 
-char json[1048576];
+static char json[131072];
+static char tmp[131072]; // 128k is enough, right?
 
 void recurse(EDF *tree, int root, int child, int depth)
 {
@@ -37,7 +38,6 @@ void recurse(EDF *tree, int root, int child, int depth)
                 break;
             default:
                 int i = 0, j = 0, l = 0;
-                char tmp[1048576]; // 1M is enough, right?
 
                 if (szMessage) {
                     l = strlen(szMessage);
