@@ -16,19 +16,20 @@ const char* ToCString(const v8::String::Utf8Value& value) {
       return *value ? *value : "<string conversion failed>";
 }
 
-static char json[131072];
-static char tmp[131072]; // 128k is enough, right?
+static char json[262144];
+static char tmp[262144]; // 128k is enough, right?
 
 void recurse(EDF *tree, int root, int child, int depth)
 {
-    char *szType = NULL, *szMessage = NULL; //, *szEncoding = NULL;
-    long lv; double dv;
     int loop = true;
     if (root) { tree->Root(); }
     if (child) { tree->Child(); }
     while (loop == true) {
+        char *szType = NULL, *szMessage = NULL; //, *szEncoding = NULL;
+        long lv; double dv;
         int t = tree->TypeGet(&szType, &szMessage, &lv, &dv);
         sprintf(json, "%s{\"tag\":\"%s\",\"value\":", json, szType);
+        if (szType) { delete szType; } 
         switch (t) {
             case EDFElement::INT:
                 sprintf(json,"%s%ld", json, lv);
@@ -39,9 +40,7 @@ void recurse(EDF *tree, int root, int child, int depth)
             default:
                 int i = 0, j = 0, l = 0;
 
-                if (szMessage) {
-                    l = strlen(szMessage);
-                }
+                if (szMessage) { l = strlen(szMessage); }
                 // let's brute force this bugger
                 for(i=0; i<l; i++) {
                     switch(szMessage[i]) {
@@ -50,6 +49,7 @@ void recurse(EDF *tree, int root, int child, int depth)
                         default: tmp[j] = szMessage[i]; j++; break;
                     }
                 }
+                if (szMessage) { delete szMessage; } // guard this with a test
                 tmp[j] = '\0';
                 sprintf(json,"%s\"%s\"", json, tmp);
                 break;
@@ -70,89 +70,42 @@ void recurse(EDF *tree, int root, int child, int depth)
     }
 }
 
-class EDFParser: ObjectWrap
+static Handle<Value> edf_parse(const Arguments& args)
 {
-private:
-  int m_count;
-public:
+  unsigned int offset=0, t_parsed=0;
+  HandleScope scope;
+  // for now, just return the first parameter as a string
+  String::Utf8Value str(args[0]);
+  const char* cstr = ToCString(str);
+  EDF *pTest = new EDF();
 
-  static Persistent<FunctionTemplate> s_ct;
-  static void Init(Handle<Object> target)
-  {
-    HandleScope scope;
-
-    Local<FunctionTemplate> t = FunctionTemplate::New(New);
-
-    s_ct = Persistent<FunctionTemplate>::New(t);
-    s_ct->InstanceTemplate()->SetInternalFieldCount(1);
-    s_ct->SetClassName(String::NewSymbol("EDFParser"));
-
-    NODE_SET_PROTOTYPE_METHOD(s_ct, "parse", Parse);
-
-    target->Set(String::NewSymbol("EDFParser"),
-                s_ct->GetFunction());
-  }
-
-  EDFParser() :
-    m_count(0)
-  {
-  }
-
-  ~EDFParser()
-  {
-  }
-
-  static Handle<Value> New(const Arguments& args)
-  {
-    HandleScope scope;
-    EDFParser* hw = new EDFParser();
-    hw->Wrap(args.This());
-    return args.This();
-  }
-
-  static Handle<Value> Parse(const Arguments& args)
-  {
-    int l_parsed = 0;
-    unsigned int offset=0, t_parsed=0;
-    HandleScope scope;
-    EDFParser* hw = ObjectWrap::Unwrap<EDFParser>(args.This());
-    hw->m_count++;
-    // for now, just return the first parameter as a string
-    String::Utf8Value str(args[0]);
-    const char* cstr = ToCString(str);
-    EDF *pTest = new EDF();
-
-    // set up our array of trees - this is fudge
-    sprintf(json, "{\"trees\":[");
-    while (offset < strlen(cstr)) { // whilst we have characters left
-        char tmp[1048576];
-        strcpy(tmp, cstr+offset);
-        l_parsed = pTest->Read(tmp);
+  // set up our array of trees - this is fudge
+  sprintf(json, "{\"trees\":[");
+  while (offset < strlen(cstr)) { // whilst we have characters left
+      strcpy(tmp, cstr+offset);
+      int l_parsed = pTest->Read(tmp);
 //        fprintf(stderr, "parsed %d\n", l_parsed);
-        if (l_parsed <= 0) {
+      if (l_parsed <= 0) {
 //            fprintf(stderr, "PARSE ERROR RETURNING BORK\n");
-            Local<String> result = String::New("-1");
-            return scope.Close(result);
-        }
-        recurse(pTest, 1, 0, 0);
-        offset = offset + l_parsed;
-        strcat(json, ", ");
-        t_parsed++;
-    }
-    sprintf(json, "%s{\"end\":1}], \"parsed\":%d}", json, t_parsed);
-    Local<String> result = String::New(json);
-    return scope.Close(result);
+          Local<String> result = String::New("-1");
+          delete pTest;
+          return scope.Close(result);
+      }
+      recurse(pTest, 1, 0, 0);
+      offset = offset + l_parsed;
+      strcat(json, ", ");
+      t_parsed++;
   }
-
-};
-
-Persistent<FunctionTemplate> EDFParser::s_ct;
+  sprintf(json, "%s{\"end\":1}], \"parsed\":%d}", json, t_parsed);
+  Local<String> result = String::New(json);
+  delete pTest;
+  return scope.Close(result);
+}
 
 extern "C" {
-  static void init (Handle<Object> target)
+  void init (Handle<Object> target)
   {
-    EDFParser::Init(target);
+    target->Set(String::New("parse"), FunctionTemplate::New(edf_parse)->GetFunction());
   }
 
-  NODE_MODULE(edfparser, init);
 }
