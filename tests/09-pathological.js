@@ -3,8 +3,6 @@ assert = require('assert');
 edf = require('edfparser');
 fs = require('fs');
 
-parser = new edf.EDFParser();
-
 function js2edf(tree) {
     var edf = '<' + tree.tag;
     if (tree.value != undefined) {
@@ -56,7 +54,7 @@ function make_test(i, wanted, got) {
 for(var i=0; i < test_strings.length; i++) {
     if (test_strings[i].length == 0) { continue; }
 
-	var j = parser.parse(test_strings[i]);
+	var j = edf.parse(test_strings[i]);
     if (j == -1) { throw("FATAL: "+test_strings[i]); }
 
 	var e = JSON.parse(j);

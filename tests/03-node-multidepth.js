@@ -1,8 +1,7 @@
 assert = require('assert');
 edf = require('edfparser');
-parser = new edf.EDFParser();
 
-j = parser.parse('<edf="on"><winter="discontent"><best="worst"/></></>');
+j = edf.parse('<edf="on"><winter="discontent"><best="worst"/></></>');
 e = eval('('+j+')');
 
 exports['test parse count'] = function(test){
