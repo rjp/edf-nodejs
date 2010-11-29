@@ -16,20 +16,20 @@ const char* ToCString(const v8::String::Utf8Value& value) {
       return *value ? *value : "<string conversion failed>";
 }
 
-static char json[131072];
-static char tmp[131072]; // 128k is enough, right?
+static char json[262144];
+static char tmp[262144]; // 128k is enough, right?
 
 void recurse(EDF *tree, int root, int child, int depth)
 {
-    char *szType = NULL, *szMessage = NULL; //, *szEncoding = NULL;
-    long lv; double dv;
     int loop = true;
     if (root) { tree->Root(); }
     if (child) { tree->Child(); }
     while (loop == true) {
+        char *szType = NULL, *szMessage = NULL; //, *szEncoding = NULL;
+        long lv; double dv;
         int t = tree->TypeGet(&szType, &szMessage, &lv, &dv);
         sprintf(json, "%s{\"tag\":\"%s\",\"value\":", json, szType);
-        delete szType;
+        if (szType) { delete szType; } 
         switch (t) {
             case EDFElement::INT:
                 sprintf(json,"%s%ld", json, lv);
@@ -40,9 +40,7 @@ void recurse(EDF *tree, int root, int child, int depth)
             default:
                 int i = 0, j = 0, l = 0;
 
-                if (szMessage) {
-                    l = strlen(szMessage);
-                }
+                if (szMessage) { l = strlen(szMessage); }
                 // let's brute force this bugger
                 for(i=0; i<l; i++) {
                     switch(szMessage[i]) {
