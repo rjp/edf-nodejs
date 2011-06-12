@@ -45,7 +45,9 @@ void recurse(EDF *tree, int root, int child, int depth)
                 for(i=0; i<l; i++) {
                     switch(szMessage[i]) {
                         case '\n': tmp[j] = '\\'; j++; tmp[j] = 'n'; j++; break;
+                        case  '\\': tmp[j] = '\\'; j++; tmp[j] = '\\'; j++; break;
                         case  '"': tmp[j] = '\\'; j++; tmp[j] = '"'; j++; break;
+                        case  '\t': tmp[j] = '\\'; j++; tmp[j] = 't'; j++; break;
                         default: tmp[j] = szMessage[i]; j++; break;
                     }
                 }
@@ -97,7 +99,7 @@ static Handle<Value> edf_parse(const Arguments& args)
       t_parsed++;
   }
   sprintf(json, "%s{\"end\":1}], \"parsed\":%d}", json, t_parsed);
-  Local<String> result = String::New(json);
+  Local<String> result = String::New(json, strlen(json));
   delete pTest;
   return scope.Close(result);
 }
